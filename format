@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd src
+astyle --style=ansi --indent=spaces=2 *.cpp *.h
+rm *.orig
