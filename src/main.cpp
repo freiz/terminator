@@ -66,8 +66,7 @@ int main(int argc, const char** argv)
     {
       score = terminator_predict(buff);
       string prediction, judge;
-      if (score > THRESHOLD
-         )
+      if (score > THRESHOLD)
         prediction = "spam";
       else
         prediction = "ham";

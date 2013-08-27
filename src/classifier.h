@@ -7,12 +7,9 @@
 
 #include "common.h"
 
-static const double thickness = 0.25;
+using namespace std;
 
-static const double logist_learning_rate = 0.01;
-static const double logist_shift = 10;
-static const double logist_thickness = 0.20;
-static const double logist_max_iters = 200;
+static const double thickness = 0.25;
 
 static const double bwinnow_alpha = 1.11;
 static const double bwinnow_beta = 0.89;
@@ -52,11 +49,10 @@ static const double pam_shift = 1.25;
 static const double pam_lambda = 0.1;
 static const int pam_max_iters = 200;
 
-const double algorithm_threshold = 0.5;
+
 const double owv_step = 0.02;
 
-double logist_predict(map<string, node>&);
-void logist_train(map<string, node>&, bool);
+
 
 double bwinnow_predict(map<string, node>&);
 void bwinnow_train(map<string, node>&, bool);

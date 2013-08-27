@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <kchashdb.h>
+#include "terminator_common.h"
 
 #define NUM_OF_CLASSIFIERS (8)
 #define THRESHOLD (0.625)
@@ -30,29 +31,7 @@ struct AdditionalInformation
   int total_ham;
 };
 
-/**
- * base model of terminator
- * store information of each feature
- * */
-struct Node
-{
-  float logist;
-  float bwinnow_upper;
-  float bwinnow_lower;
-  int nsnb_spam;
-  int nsnb_ham;
-  double nsnb_confidence;
-  float pam;
-  float pa;
-  float winnow;
-  int hit_spam;
-  int hit_ham;
-  float hit;
-  int nb_spam;
-  int nb_ham;
-};
-typedef struct Node node;
-typedef struct Node * ptr_node;
+
 
 /**
  * initial value of node
@@ -137,17 +116,9 @@ double terminator_predict(string);
  * */
 void terminator_train(string, bool);
 
-inline double logist(double x)
-{
-  return 1.0 / (1.0 + exp(-x));
-}
 
-inline double invlogist(double x)
-{
-  return log(x / (1 - x));
-}
 
-extern const double algorithm_threshold;
+
 extern const double owv_step;
 
 extern double logist_predict(map<string, node>&);
