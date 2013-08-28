@@ -8,12 +8,12 @@
 
 #include "terminator_classifier_winnow.h"
 
-const double DEFAULT_WINNOW_THRESHOLD = 1.0;
-const double DEFAULT_WINNOW_SHIFT = 1;
-const double DEFAULT_WINNOW_THICKNESS = 0.1;
-const double DEFAULT_WINNOW_ALPHA = 1.23;
-const double DEFAULT_WINNOW_BETA = 0.83;
-const double DEFAULT_WINNOW_MAX_ITERATIONS = 20;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_THRESHOLD = 1.0;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_SHIFT = 1;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_THICKNESS = 0.1;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_ALPHA = 1.23;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_BETA = 0.83;
+const double TerminatorClassifierWinnow::DEFAULT_WINNOW_MAX_ITERATIONS = 20;
 
 TerminatorClassifierWinnow::TerminatorClassifierWinnow()
 {

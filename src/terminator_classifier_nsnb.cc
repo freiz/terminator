@@ -8,11 +8,11 @@
 
 #include "terminator_classifier_nsnb.h"
 
-const double DEFAULT_NSNB_SHIFT = 3200;
-const double DEFAULT_NSNB_SMOOTH = 1e-5;
-const double DEFAULT_NSNB_THICKNESS = 0.25;
-const double DEFAULT_NSNB_LEARNING_RATE = 0.65;
-const double DEFAULT_NSNB_MAX_ITERATIONS = 250;
+const double TermiantorClassifierNSNB::DEFAULT_NSNB_SHIFT = 3200;
+const double TermiantorClassifierNSNB::DEFAULT_NSNB_SMOOTH = 1e-5;
+const double TermiantorClassifierNSNB::DEFAULT_NSNB_THICKNESS = 0.25;
+const double TermiantorClassifierNSNB::DEFAULT_NSNB_LEARNING_RATE = 0.65;
+const double TermiantorClassifierNSNB::DEFAULT_NSNB_MAX_ITERATIONS = 250;
 
 TermiantorClassifierNSNB::TermiantorClassifierNSNB()
 {

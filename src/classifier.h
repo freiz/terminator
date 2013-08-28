@@ -25,7 +25,6 @@ static const int hit_max_iters = 250;
 
 
 
-static const double pa_shift = 1.0;
 
 static const double pam_shift = 1.25;
 static const double pam_lambda = 0.1;
@@ -42,8 +41,7 @@ const double owv_step = 0.02;
 double pam_predict(map<string, node>&);
 void pam_train(map<string, node>&, bool);
 
-double pa_predict(map<string, node>&);
-void pa_train(map<string, node>&, bool);
+
 
 
 double hit_predict(map<string, node>&);
