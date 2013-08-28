@@ -9,14 +9,27 @@
 #ifndef terminator_terminator_classifier_lr_h
 #define terminator_terminator_classifier_lr_h
 
-#include "terminator_common.h"
+#include "terminator_classifier_base.h"
 
-static const double logist_learning_rate = 0.01;
-static const double logist_shift = 10;
-static const double logist_thickness = 0.20;
-static const double logist_max_iters = 200;
+class TerminatorClassifierLR: public TerminatorClassifierBase
+{
+private:
+  static const double DEFAULT_LOGISTIC_LEARNING_RATE;
+  static const double DEFAULT_LOGISTIC_SHIFT;
+  static const double DEFAULT_LOGISTIC_THICKNESS;
+  static const double DEFAULT_LOGISTIC_MAX_ITERATIONS;
+  
+  double logistic_learning_rate_;
+  double logistic_shift_;
+  double logistic_thickness_;
+  double logistic_max_iterations_;
+  
+public:
+  TerminatorClassifierLR();
+  virtual void Train(map<string, node>&, bool);
+  virtual double Predict(map<string, node>&);
 
-double logist_predict(map<string, node>&);
-void logist_train(map<string, node>&, bool);
+};
+
 
 #endif

@@ -2,66 +2,7 @@
 #include "classifier.h"
 //#include "common.h"
 
-double nb_predict(map<string, node>& tmp_weights)
-{
-  double score = 0.0;
-  map<string, node>::iterator iter;
-  int s, h;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-  {
-    s = (iter->second).nb_spam;
-    h = (iter->second).nb_ham;
-    if (s == 0 && h == 0)
-      continue;
-    score += log(
-               (s + nb_smooth) / (h + nb_smooth) * (total_ham + 2 * nb_smooth)
-               / (total_spam + 2 * nb_smooth));
-  }
-  score += log((total_spam + nb_smooth) / (total_ham + nb_smooth));
-  score = logist(score / nb_shift);
-  return score;
-}
 
-void nb_train_cell(map<string, node>& tmp_weights,
-                   bool email_type)
-{
-  map<string, node>::iterator iter;
-  if (email_type)
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).nb_spam += nb_increasing;
-    }
-  }
-  else
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).nb_ham += nb_increasing;
-    }
-  }
-}
-
-void nb_train(map<string, node>& tmp_weights,
-              bool email_type)
-{
-  map<string, node>::iterator iter;
-  double score = nb_predict(tmp_weights);
-  int count = 0;
-  while (email_type && score < algorithm_threshold + nb_thickness && count < nb_max_iters)
-  {
-    nb_train_cell(tmp_weights, email_type);
-    score = nb_predict(tmp_weights);
-    count++;
-  }
-  count = 0;
-  while (!email_type && score > algorithm_threshold - nb_thickness && count < nb_max_iters)
-  {
-    nb_train_cell(tmp_weights, email_type);
-    score = nb_predict(tmp_weights);
-    count++;
-  }
-}
 
 double hit_predict(map<string, node>& tmp_weights)
 {
@@ -334,55 +275,6 @@ void nsnb_train(map<string, node>& tmp_weights,
 
 
 
-double bwinnow_predict(map<string, node>& tmp_weights)
-{
-  double bwinnow_score = 0.0;
-  map<string, node>::iterator iter =
-    tmp_weights.begin();
-  while (iter != tmp_weights.end())
-  {
-    bwinnow_score += (iter->second).bwinnow_upper
-                     - (iter->second).bwinnow_lower;
-    ++iter;
-  }
-  bwinnow_score /= tmp_weights.size();
-  bwinnow_score -= bwinnow_threshold;
-  bwinnow_score = logist(bwinnow_score / bwinnow_shift);
-  return bwinnow_score;
-}
 
-
-
-void bwinnow_train(map<string, node>& tmp_weights,
-                   bool email_type)
-{
-  double bwinnow_score = bwinnow_predict(tmp_weights);
-  map<string, node>::iterator iter;
-  int count = 0;
-
-  while (email_type && bwinnow_score <= algorithm_threshold + bwinnow_thickness
-         && count < bwinnow_max_iters)
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).bwinnow_upper *= bwinnow_alpha;
-      (iter->second).bwinnow_lower *= bwinnow_beta;
-    }
-    bwinnow_score = bwinnow_predict(tmp_weights);
-    count++;
-  }
-  count = 0;
-  while (!email_type && bwinnow_score >= algorithm_threshold - bwinnow_thickness
-         && count < bwinnow_max_iters)
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).bwinnow_upper *= bwinnow_beta;
-      (iter->second).bwinnow_lower *= bwinnow_alpha;
-    }
-    bwinnow_score = bwinnow_predict(tmp_weights);
-    count++;
-  }
-}
 
 
