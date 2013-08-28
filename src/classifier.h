@@ -13,11 +13,7 @@ static const double thickness = 0.25;
 
 
 
-static const double nsnb_shift = 3200;
-static const double nsnb_smooth = 1e-5;
-static const double nsnb_thickness = 0.25;
-static const double nsnb_learning_rate = 0.65;
-static const double nsnb_max_iters = 250;
+
 
 static const double winnow_threshold = 1.0;
 static const double winnow_shift = 1;
@@ -46,9 +42,7 @@ const double owv_step = 0.02;
 
 
 
-double nsnb_predict(map<string, node>&);
-void nsnb_train_cell(map<string, node>&, bool);
-void nsnb_train(map<string, node>&, bool);
+
 
 double pam_predict(map<string, node>&);
 void pam_train(map<string, node>&, bool);
