@@ -15,12 +15,7 @@ static const double thickness = 0.25;
 
 
 
-static const double winnow_threshold = 1.0;
-static const double winnow_shift = 1;
-static const double winnow_thickness = 0.1;
-static const double winnow_alpha = 1.23;
-static const double winnow_beta = 0.83;
-static const int winnow_max_iters = 20;
+
 
 static const double hit_rate = 0.01;
 static const double hit_shift = 60;
@@ -50,8 +45,6 @@ void pam_train(map<string, node>&, bool);
 double pa_predict(map<string, node>&);
 void pa_train(map<string, node>&, bool);
 
-double winnow_predict(map<string, node>&);
-void winnow_train(map<string, node>&, bool);
 
 double hit_predict(map<string, node>&);
 void hit_train(map<string, node>&, bool);

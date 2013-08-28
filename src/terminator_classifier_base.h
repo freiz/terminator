@@ -16,7 +16,7 @@ class TerminatorClassifierBase
 public:
   static unsigned long long TotalSpam;
   static unsigned long long TotalHam;
-  virtual void Train(map<string, node>&, bool) = 0;
-  virtual double Predict(map<string, node>&) = 0;
+  virtual void Train(map<string, node>& weights, bool is_spam) = 0;
+  virtual double Predict(map<string, node>& weights) = 0;
 };
 #endif

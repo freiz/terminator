@@ -69,48 +69,6 @@ void hit_train(map<string, node>& tmp_weights,
   }
 }
 
-double winnow_predict(map<string, node>& tmp_weights)
-{
-  double score = 0.0;
-  map<string, node>::iterator iter;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-  {
-    score += (iter->second).winnow;
-  }
-  score /= tmp_weights.size();
-  score -= winnow_threshold;
-  score = logist(score / winnow_shift);
-  return score;
-}
-
-void winnow_train(map<string, node>& tmp_weights,
-                  bool email_type)
-{
-  map<string, node>::iterator iter;
-  double score = winnow_predict(tmp_weights);
-
-  int count = 0;
-  if (email_type && score < algorithm_threshold + winnow_thickness
-      && count < winnow_max_iters)
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).winnow *= winnow_alpha;
-    }
-    count++;
-  }
-
-  count = 0;
-  if (!email_type && score > algorithm_threshold - winnow_thickness
-      && count < winnow_max_iters)
-  {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).winnow *= winnow_beta;
-    }
-    count++;
-  }
-}
 
 double pa_predict(map<string, node>& tmp_weights)
 {

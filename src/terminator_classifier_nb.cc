@@ -23,12 +23,12 @@ TerminatorClassifierNB::TerminatorClassifierNB()
   this->nb_max_iterations_ = TerminatorClassifierNB::DEFAULT_NB_MAX_ITERATIONS;
 }
 
-double TerminatorClassifierNB::Predict(map<string, node>& tmp_weights)
+double TerminatorClassifierNB::Predict(map<string, node>& weights)
 {
   double score = 0.0;
   map<string, node>::iterator iter;
   int s, h;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+  for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     s = (iter->second).nb_spam;
     h = (iter->second).nb_ham;
@@ -43,43 +43,43 @@ double TerminatorClassifierNB::Predict(map<string, node>& tmp_weights)
   return score;
 }
 
-void TerminatorClassifierNB::TrainCell(map<string, node>& tmp_weights,
-                   bool email_type)
+void TerminatorClassifierNB::TrainCell(map<string, node>& weights,
+                   bool is_spam)
 {
   map<string, node>::iterator iter;
-  if (email_type)
+  if (is_spam)
   {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nb_spam += this->nb_increasing_;
     }
   }
   else
   {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nb_ham += this->nb_increasing_;
     }
   }
 }
 
-void TerminatorClassifierNB::Train(map<string, node>& tmp_weights,
-              bool email_type)
+void TerminatorClassifierNB::Train(map<string, node>& weights,
+              bool is_spam)
 {
   map<string, node>::iterator iter;
-  double score = this->Predict(tmp_weights);
+  double score = this->Predict(weights);
   int count = 0;
-  while (email_type && score < algorithm_threshold + this->nb_thickness_ && count < this->nb_max_iterations_)
+  while (is_spam && score < algorithm_threshold + this->nb_thickness_ && count < this->nb_max_iterations_)
   {
-    this->TrainCell(tmp_weights, email_type);
-    score = this->Predict(tmp_weights);
+    this->TrainCell(weights, is_spam);
+    score = this->Predict(weights);
     count++;
   }
   count = 0;
-  while (!email_type && score > algorithm_threshold - this->nb_thickness_ && count < this->nb_max_iterations_)
+  while (!is_spam && score > algorithm_threshold - this->nb_thickness_ && count < this->nb_max_iterations_)
   {
-    this->TrainCell(tmp_weights, email_type);
-    score = this->Predict(tmp_weights);
+    this->TrainCell(weights, is_spam);
+    score = this->Predict(weights);
     count++;
   }
 }

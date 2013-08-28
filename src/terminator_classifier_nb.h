@@ -26,12 +26,12 @@ private:
   int nb_increasing_;
   int nb_max_iterations_;
   
-  void TrainCell(map<string, node>&, bool);
+  void TrainCell(map<string, node>& weights, bool is_spam);
 
 public:
   TerminatorClassifierNB();
-  virtual double Predict(map<string, node>&);
-  virtual void Train(map<string, node>&, bool);
+  virtual double Predict(map<string, node>& weights);
+  virtual void Train(map<string, node>& weights, bool is_spam);
 
 };
 

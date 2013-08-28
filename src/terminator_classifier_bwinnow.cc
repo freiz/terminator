@@ -43,13 +43,13 @@ double TerminatorClassifierBWinnow::Predict(map<string, node>& weights)
 
 
 void TerminatorClassifierBWinnow::Train(map<string, node>& weights,
-                   bool email_type)
+                   bool is_spam)
 {
   double bwinnow_score = this->Predict(weights);
   map<string, node>::iterator iter;
   int count = 0;
   
-  while (email_type && bwinnow_score <= algorithm_threshold + this->bwinnow_thickness_
+  while (is_spam && bwinnow_score <= algorithm_threshold + this->bwinnow_thickness_
          && count < this->bwinnow_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
@@ -61,7 +61,7 @@ void TerminatorClassifierBWinnow::Train(map<string, node>& weights,
     count++;
   }
   count = 0;
-  while (!email_type && bwinnow_score >= algorithm_threshold - this->bwinnow_thickness_
+  while (!is_spam && bwinnow_score >= algorithm_threshold - this->bwinnow_thickness_
          && count < this->bwinnow_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)

@@ -23,12 +23,12 @@ TermiantorClassifierNSNB::TermiantorClassifierNSNB()
   this->nsnb_max_iterations_ = TermiantorClassifierNSNB::DEFAULT_NSNB_MAX_ITERATIONS;
 }
 
-double TermiantorClassifierNSNB::Predict(map<string, node>& tmp_weights)
+double TermiantorClassifierNSNB::Predict(map<string, node>& weights)
 {
   double score = 0.0;
   int s, h;
   map<string, node>::iterator iter;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+  for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     s = (iter->second).nsnb_spam;
     h = (iter->second).nsnb_ham;
@@ -45,13 +45,13 @@ double TermiantorClassifierNSNB::Predict(map<string, node>& tmp_weights)
   return score;
 }
 
-void TermiantorClassifierNSNB::TrainCell(map<string, node>& tmp_weights, bool email_type)
+void TermiantorClassifierNSNB::TrainCell(map<string, node>& weights, bool is_spam)
 {
   map<string, node>::iterator iter;
-  if (email_type)
+  if (is_spam)
   {
     TerminatorClassifierBase::TotalSpam += 1;
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nsnb_spam += 1;
     }
@@ -59,18 +59,18 @@ void TermiantorClassifierNSNB::TrainCell(map<string, node>& tmp_weights, bool em
   else
   {
     TerminatorClassifierBase::TotalHam += 1;
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nsnb_ham += 1;
     }
   }
 }
-void TermiantorClassifierNSNB::Train(map<string, node>& tmp_weights,
-                bool email_type)
+void TermiantorClassifierNSNB::Train(map<string, node>& weights,
+                bool is_spam)
 {
   map<string, node>::iterator iter;
-  double score = this->Predict(tmp_weights);
-  if (email_type)
+  double score = this->Predict(weights);
+  if (is_spam)
   {
     TerminatorClassifierBase::TotalSpam += 1;
   }
@@ -79,27 +79,27 @@ void TermiantorClassifierNSNB::Train(map<string, node>& tmp_weights,
     TerminatorClassifierBase::TotalHam += 1;
   }
   int count = 0;
-  while (email_type && score < algorithm_threshold + this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
+  while (is_spam && score < algorithm_threshold + this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
   {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nsnb_confidence /= this->nsnb_learning_rate_;
     }
-    TrainCell(tmp_weights, email_type);
+    TrainCell(weights, is_spam);
     TerminatorClassifierBase::TotalSpam -= 1;
-    score = this->Predict(tmp_weights);
+    score = this->Predict(weights);
     count++;
   }
   count = 0;
-  while (!email_type && score > algorithm_threshold - this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
+  while (!is_spam && score > algorithm_threshold - this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
   {
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
+    for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).nsnb_confidence *= this->nsnb_learning_rate_;
     }
-    TrainCell(tmp_weights, email_type);
+    TrainCell(weights, is_spam);
     TerminatorClassifierBase::TotalHam -= 1;
-    score = this->Predict(tmp_weights);
+    score = this->Predict(weights);
     count++;
   }
 }

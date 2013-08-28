@@ -26,8 +26,8 @@ private:
   
 public:
   TerminatorClassifierLR();
-  virtual void Train(map<string, node>&, bool);
-  virtual double Predict(map<string, node>&);
+  virtual void Train(map<string, node>& weights, bool is_spam);
+  virtual double Predict(map<string, node>& weights);
 
 };
 

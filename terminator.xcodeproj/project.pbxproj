@@ -16,6 +16,8 @@
 		A288C6CD17CE326500E9901E /* terminator_classifier_base.cc in Sources */ = {isa = PBXBuildFile; fileRef = A288C6CC17CE326500E9901E /* terminator_classifier_base.cc */; };
 		A288C6CF17CE338300E9901E /* terminator_classifier_nsnb.h in Headers */ = {isa = PBXBuildFile; fileRef = A288C6CE17CE338300E9901E /* terminator_classifier_nsnb.h */; };
 		A288C6D117CE342600E9901E /* terminator_classifier_nsnb.cc in Sources */ = {isa = PBXBuildFile; fileRef = A288C6D017CE342600E9901E /* terminator_classifier_nsnb.cc */; };
+		A288C6D317CE3F9E00E9901E /* terminator_classifier_winnow.h in Headers */ = {isa = PBXBuildFile; fileRef = A288C6D217CE3F9E00E9901E /* terminator_classifier_winnow.h */; };
+		A288C6D517CE400100E9901E /* terminator_classifier_winnow.cc in Sources */ = {isa = PBXBuildFile; fileRef = A288C6D417CE400100E9901E /* terminator_classifier_winnow.cc */; };
 		A2B2D2A217CC2040001E1DCB /* classifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D29D17CC2040001E1DCB /* classifier.cpp */; };
 		A2B2D2A317CC2040001E1DCB /* classifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B2D29E17CC2040001E1DCB /* classifier.h */; };
 		A2B2D2A417CC2040001E1DCB /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D29F17CC2040001E1DCB /* common.cpp */; };
@@ -36,6 +38,8 @@
 		A288C6CC17CE326500E9901E /* terminator_classifier_base.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_base.cc; sourceTree = "<group>"; };
 		A288C6CE17CE338300E9901E /* terminator_classifier_nsnb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator_classifier_nsnb.h; sourceTree = "<group>"; };
 		A288C6D017CE342600E9901E /* terminator_classifier_nsnb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_nsnb.cc; sourceTree = "<group>"; };
+		A288C6D217CE3F9E00E9901E /* terminator_classifier_winnow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator_classifier_winnow.h; sourceTree = "<group>"; };
+		A288C6D417CE400100E9901E /* terminator_classifier_winnow.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_winnow.cc; sourceTree = "<group>"; };
 		A2B2D29D17CC2040001E1DCB /* classifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classifier.cpp; sourceTree = "<group>"; };
 		A2B2D29E17CC2040001E1DCB /* classifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = classifier.h; sourceTree = "<group>"; };
 		A2B2D29F17CC2040001E1DCB /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 				A26D82D717CC2B7E0093EFE0 /* terminator_common.h */,
 				A288C6CE17CE338300E9901E /* terminator_classifier_nsnb.h */,
 				A288C6D017CE342600E9901E /* terminator_classifier_nsnb.cc */,
+				A288C6D217CE3F9E00E9901E /* terminator_classifier_winnow.h */,
+				A288C6D417CE400100E9901E /* terminator_classifier_winnow.cc */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -114,6 +120,7 @@
 				A288C6C517CE24E200E9901E /* terminator_classifier_bwinnow.h in Headers */,
 				A288C6C917CE2A3800E9901E /* terminator_classifier_nb.h in Headers */,
 				A288C6CF17CE338300E9901E /* terminator_classifier_nsnb.h in Headers */,
+				A288C6D317CE3F9E00E9901E /* terminator_classifier_winnow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +183,7 @@
 				A288C6CB17CE2A4A00E9901E /* terminator_classifier_nb.cc in Sources */,
 				A288C6CD17CE326500E9901E /* terminator_classifier_base.cc in Sources */,
 				A288C6D117CE342600E9901E /* terminator_classifier_nsnb.cc in Sources */,
+				A288C6D517CE400100E9901E /* terminator_classifier_winnow.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
