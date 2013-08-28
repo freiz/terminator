@@ -26,9 +26,7 @@ static const int hit_max_iters = 250;
 
 
 
-static const double pam_shift = 1.25;
-static const double pam_lambda = 0.1;
-static const int pam_max_iters = 200;
+
 
 
 const double owv_step = 0.02;

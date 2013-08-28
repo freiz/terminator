@@ -72,49 +72,7 @@ void hit_train(map<string, node>& tmp_weights,
 
 
 
-double pam_predict(map<string, node>& tmp_weights)
-{
-  double score = 0.0;
-  map<string, node>::iterator iter;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-  {
-    score += (iter->second).pam;
-  }
-  score = logist(score / pam_shift);
-  return score;
-}
 
-void pam_train(map<string, node>& tmp_weights,
-               bool email_type)
-{
-  int label;
-  if (email_type)
-    label = 1;
-  else
-    label = -1;
-  double score = 0.0;
-  map<string, node>::iterator iter;
-  for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-  {
-    score += (iter->second).pam;
-  }
-  // hinge loss
-  int count = 0;
-  while (label * score < 1.0 && count < pam_max_iters)
-  {
-    double tol = pam_lambda / tmp_weights.size();
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      (iter->second).pam += label * tol;
-    }
-    score = 0.0;
-    for (iter = tmp_weights.begin(); iter != tmp_weights.end(); ++iter)
-    {
-      score += (iter->second).pam;
-    }
-    count++;
-  }
-}
 
 
 
