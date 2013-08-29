@@ -26,12 +26,10 @@ class TerminatorClassifierOWV: public TerminatorClassifierBase
   
 private:
   
-  static const double DEFAULT_OWV_THRESHOLD;
   static const double DEFAULT_OWV_STEP;
   static const unsigned DEFAULT_CLASSIFIER_NUMBER;
   static const double DEFAULT_OWV_SPAM_TRADEOFF;
   
-  double owv_threshold_;
   double owv_step_;
   double owv_spam_tradeoff;
   
@@ -50,8 +48,8 @@ private:
   
 public:
   TerminatorClassifierOWV(double* weights_classifier);
-  virtual void Train(map<string, node>& weights, bool is_spam);
-  virtual double Predict(map<string, node>& weights);
+  virtual void Train(std::map<std::string, node>& weights, bool is_spam);
+  virtual double Predict(std::map<std::string, node>& weights);
 };
 
 #endif

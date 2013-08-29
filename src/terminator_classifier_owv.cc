@@ -8,18 +8,16 @@
 
 #include "terminator_classifier_owv.h"
 
-const double TerminatorClassifierOWV::DEFAULT_OWV_THRESHOLD = 0.5;
 const double TerminatorClassifierOWV::DEFAULT_OWV_STEP = 0.02;
 
 TerminatorClassifierOWV::TerminatorClassifierOWV(double* weights_classifier)
 {
-  this->owv_threshold_ = TerminatorClassifierOWV::DEFAULT_OWV_THRESHOLD;
   this->owv_step_ = TerminatorClassifierOWV::DEFAULT_OWV_STEP;
   unsigned i = 0;
   while (i++ < CLASSIFIER_NUMBER) this->weights_classifier_[i] = weights_classifier[i];
 }
 
-double TerminatorClassifierOWV::Predict(map<string, node>& weights)
+double TerminatorClassifierOWV::Predict(std::map<std::string, node>& weights)
 {
   double final_score = 0.0;
   double total_weights = 0.0;
@@ -31,7 +29,7 @@ double TerminatorClassifierOWV::Predict(map<string, node>& weights)
   return final_score / total_weights;
 }
 
-void TerminatorClassifierOWV::Train(map<string, node>& weights, bool is_spam)
+void TerminatorClassifierOWV::Train(std::map<std::string, node>& weights, bool is_spam)
 {
   double final_score = 0.0;
   double total_weights = 0.0;
@@ -45,11 +43,11 @@ void TerminatorClassifierOWV::Train(map<string, node>& weights, bool is_spam)
   final_score /= total_weights;
   if (is_spam)
   {
-    if (final_score > owv_threshold_)
+    if (final_score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
     {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++)
       {
-        if (scores[i] <= owv_threshold_)
+        if (scores[i] <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
           weights_classifier_[i] -= owv_step_;
       }
     }
@@ -57,18 +55,18 @@ void TerminatorClassifierOWV::Train(map<string, node>& weights, bool is_spam)
     {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++)
       {
-        if (scores[i] > owv_threshold_)
+        if (scores[i] > TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
           weights_classifier_[i] += owv_spam_tradeoff * owv_step_;
       }
     }
   }
   else
   {
-    if (final_score > owv_threshold_)
+    if (final_score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
     {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++)
       {
-        if (scores[i] <= algorithm_threshold)
+        if (scores[i] <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
           weights_classifier_[i] += owv_spam_tradeoff * owv_step_;
       }
     }
@@ -76,7 +74,7 @@ void TerminatorClassifierOWV::Train(map<string, node>& weights, bool is_spam)
     {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++)
       {
-        if (scores[i] > algorithm_threshold)
+        if (scores[i] > TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
           weights_classifier_[i] -= owv_step_;
       }
     }

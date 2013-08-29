@@ -30,8 +30,8 @@ private:
 
 public:
   TerminatorClassifierBWinnow();
-  virtual double Predict(map<string, node>& weights);
-  virtual void Train(map<string, node>& weights, bool is_spam);
+  virtual double Predict(std::map<std::string, node>& weights);
+  virtual void Train(std::map<std::string, node>& weights, bool is_spam);
 };
 
 

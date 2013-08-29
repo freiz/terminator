@@ -24,10 +24,10 @@ TerminatorClassifierBWinnow::TerminatorClassifierBWinnow()
   this->bwinnow_thickness_ = TerminatorClassifierBWinnow::DEFAULT_BWINNOW_THICKNESS;
 }
 
-double TerminatorClassifierBWinnow::Predict(map<string, node>& weights)
+double TerminatorClassifierBWinnow::Predict(std::map<std::string, node>& weights)
 {
   double bwinnow_score = 0.0;
-  map<string, node>::iterator iter =
+  std::map<std::string, node>::iterator iter =
   weights.begin();
   while (iter != weights.end())
   {
@@ -42,14 +42,14 @@ double TerminatorClassifierBWinnow::Predict(map<string, node>& weights)
 }
 
 
-void TerminatorClassifierBWinnow::Train(map<string, node>& weights,
+void TerminatorClassifierBWinnow::Train(std::map<std::string, node>& weights,
                    bool is_spam)
 {
   double bwinnow_score = this->Predict(weights);
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   int count = 0;
   
-  while (is_spam && bwinnow_score <= algorithm_threshold + this->bwinnow_thickness_
+  while (is_spam && bwinnow_score <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->bwinnow_thickness_
          && count < this->bwinnow_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
@@ -61,7 +61,7 @@ void TerminatorClassifierBWinnow::Train(map<string, node>& weights,
     count++;
   }
   count = 0;
-  while (!is_spam && bwinnow_score >= algorithm_threshold - this->bwinnow_thickness_
+  while (!is_spam && bwinnow_score >= TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->bwinnow_thickness_
          && count < this->bwinnow_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)

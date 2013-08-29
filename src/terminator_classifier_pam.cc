@@ -19,10 +19,10 @@ TerminatorClassifierPAM::TerminatorClassifierPAM()
   this->pam_max_iterations_ = TerminatorClassifierPAM::DEFAULT_PAM_MAX_ITERATIONS;
 }
 
-double TerminatorClassifierPAM::Predict(map<string, node>& weights)
+double TerminatorClassifierPAM::Predict(std::map<std::string, node>& weights)
 {
   double score = 0.0;
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     score += (iter->second).pam;
@@ -31,7 +31,7 @@ double TerminatorClassifierPAM::Predict(map<string, node>& weights)
   return score;
 }
 
-void TerminatorClassifierPAM::Train(map<string, node>& weights,
+void TerminatorClassifierPAM::Train(std::map<std::string, node>& weights,
                bool is_spam)
 {
   int label;
@@ -40,7 +40,7 @@ void TerminatorClassifierPAM::Train(map<string, node>& weights,
   else
     label = -1;
   double score = 0.0;
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     score += (iter->second).pam;

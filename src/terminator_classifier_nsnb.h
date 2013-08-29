@@ -26,12 +26,12 @@ private:
   double nsnb_learning_rate_;
   double nsnb_max_iterations_;
   
-  void TrainCell(map<string, node>& weights, bool is_spam);
+  void TrainCell(std::map<std::string, node>& weights, bool is_spam);
   
 public:
   TermiantorClassifierNSNB();
-  virtual double Predict(map<string, node>& weights);
-  virtual void Train(map<string, node>& weights, bool is_spam);
+  virtual double Predict(std::map<std::string, node>& weights);
+  virtual void Train(std::map<std::string, node>& weights, bool is_spam);
 };
 
 

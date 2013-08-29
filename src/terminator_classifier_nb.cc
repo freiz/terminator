@@ -23,10 +23,10 @@ TerminatorClassifierNB::TerminatorClassifierNB()
   this->nb_max_iterations_ = TerminatorClassifierNB::DEFAULT_NB_MAX_ITERATIONS;
 }
 
-double TerminatorClassifierNB::Predict(map<string, node>& weights)
+double TerminatorClassifierNB::Predict(std::map<std::string, node>& weights)
 {
   double score = 0.0;
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   int s, h;
   for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
@@ -43,10 +43,10 @@ double TerminatorClassifierNB::Predict(map<string, node>& weights)
   return score;
 }
 
-void TerminatorClassifierNB::TrainCell(map<string, node>& weights,
+void TerminatorClassifierNB::TrainCell(std::map<std::string, node>& weights,
                    bool is_spam)
 {
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   if (is_spam)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
@@ -63,20 +63,20 @@ void TerminatorClassifierNB::TrainCell(map<string, node>& weights,
   }
 }
 
-void TerminatorClassifierNB::Train(map<string, node>& weights,
+void TerminatorClassifierNB::Train(std::map<std::string, node>& weights,
               bool is_spam)
 {
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   double score = this->Predict(weights);
   int count = 0;
-  while (is_spam && score < algorithm_threshold + this->nb_thickness_ && count < this->nb_max_iterations_)
+  while (is_spam && score < TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->nb_thickness_ && count < this->nb_max_iterations_)
   {
     this->TrainCell(weights, is_spam);
     score = this->Predict(weights);
     count++;
   }
   count = 0;
-  while (!is_spam && score > algorithm_threshold - this->nb_thickness_ && count < this->nb_max_iterations_)
+  while (!is_spam && score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->nb_thickness_ && count < this->nb_max_iterations_)
   {
     this->TrainCell(weights, is_spam);
     score = this->Predict(weights);

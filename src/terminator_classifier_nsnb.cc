@@ -23,11 +23,11 @@ TermiantorClassifierNSNB::TermiantorClassifierNSNB()
   this->nsnb_max_iterations_ = TermiantorClassifierNSNB::DEFAULT_NSNB_MAX_ITERATIONS;
 }
 
-double TermiantorClassifierNSNB::Predict(map<string, node>& weights)
+double TermiantorClassifierNSNB::Predict(std::map<std::string, node>& weights)
 {
   double score = 0.0;
   int s, h;
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     s = (iter->second).nsnb_spam;
@@ -45,9 +45,9 @@ double TermiantorClassifierNSNB::Predict(map<string, node>& weights)
   return score;
 }
 
-void TermiantorClassifierNSNB::TrainCell(map<string, node>& weights, bool is_spam)
+void TermiantorClassifierNSNB::TrainCell(std::map<std::string, node>& weights, bool is_spam)
 {
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   if (is_spam)
   {
     TerminatorClassifierBase::TotalSpam += 1;
@@ -65,10 +65,10 @@ void TermiantorClassifierNSNB::TrainCell(map<string, node>& weights, bool is_spa
     }
   }
 }
-void TermiantorClassifierNSNB::Train(map<string, node>& weights,
+void TermiantorClassifierNSNB::Train(std::map<std::string, node>& weights,
                 bool is_spam)
 {
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   double score = this->Predict(weights);
   if (is_spam)
   {
@@ -79,7 +79,7 @@ void TermiantorClassifierNSNB::Train(map<string, node>& weights,
     TerminatorClassifierBase::TotalHam += 1;
   }
   int count = 0;
-  while (is_spam && score < algorithm_threshold + this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
+  while (is_spam && score < TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
@@ -91,7 +91,7 @@ void TermiantorClassifierNSNB::Train(map<string, node>& weights,
     count++;
   }
   count = 0;
-  while (!is_spam && score > algorithm_threshold - this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
+  while (!is_spam && score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->nsnb_thickness_ && count < this->nsnb_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {

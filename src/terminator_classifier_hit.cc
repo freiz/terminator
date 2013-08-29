@@ -23,10 +23,10 @@ TerminatorClassifierHIT::TerminatorClassifierHIT()
   this->hit_max_iterations_ = TerminatorClassifierHIT::DEFAULT_HIT_MAX_ITERATIONS;
 }
 
-double TerminatorClassifierHIT::Predict(map<string, node>& weights)
+double TerminatorClassifierHIT::Predict(std::map<std::string, node>& weights)
 {
   double score = 0.0;
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   for (iter = weights.begin(); iter != weights.end(); ++iter)
   {
     score += (iter->second).hit;
@@ -35,10 +35,10 @@ double TerminatorClassifierHIT::Predict(map<string, node>& weights)
   return score;
 }
 
-void TerminatorClassifierHIT::Train(map<string, node>& weights,
+void TerminatorClassifierHIT::Train(std::map<std::string, node>& weights,
                bool is_spam)
 {
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   if (is_spam)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
@@ -57,7 +57,7 @@ void TerminatorClassifierHIT::Train(map<string, node>& weights,
   double ratio, p;
   score = this->Predict(weights);
   int count = 0;
-  while (is_spam && score < algorithm_threshold + this->hit_thickness_ && count < this->hit_max_iterations_)
+  while (is_spam && score < TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->hit_thickness_ && count < this->hit_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
@@ -72,7 +72,7 @@ void TerminatorClassifierHIT::Train(map<string, node>& weights,
     count += 1;
   }
   count = 0;
-  while (!is_spam && score > algorithm_threshold - this->hit_thickness_ && count < this->hit_max_iterations_)
+  while (!is_spam && score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->hit_thickness_ && count < this->hit_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {

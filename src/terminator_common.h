@@ -13,8 +13,6 @@
 #include <map>
 #include <cmath>
 
-using namespace std;
-
 /**
  * base model of terminator
  * store information of each feature
@@ -36,6 +34,7 @@ struct Node
   int nb_spam;
   int nb_ham;
 };
+
 typedef struct Node node;
 typedef struct Node * ptr_node;
 
@@ -48,7 +47,5 @@ inline double invlogist(double x)
 {
   return log(x / (1 - x));
 }
-
-const double algorithm_threshold = 0.5;
 
 #endif

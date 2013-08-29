@@ -22,10 +22,10 @@ TerminatorClassifierLR::TerminatorClassifierLR()
 }
 
 
-double TerminatorClassifierLR::Predict(map<string, node>& weights)
+double TerminatorClassifierLR::Predict(std::map<std::string, node>& weights)
 {
   double logist_score = 0.0;
-  map<string, node>::iterator iter = weights.begin();
+  std::map<std::string, node>::iterator iter = weights.begin();
   while (iter != weights.end())
   {
     logist_score += (iter->second).logist;
@@ -35,13 +35,13 @@ double TerminatorClassifierLR::Predict(map<string, node>& weights)
   return logist_score;
 }
 
-void TerminatorClassifierLR::Train(map<string, node>& weights, bool is_spam)
+void TerminatorClassifierLR::Train(std::map<std::string, node>& weights, bool is_spam)
 {
   double logist_score = this->Predict(weights);
-  map<string, node>::iterator iter;
+  std::map<std::string, node>::iterator iter;
   int count = 0;
   
-  while (is_spam && logist_score <= algorithm_threshold + this->logistic_thickness_
+  while (is_spam && logist_score <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->logistic_thickness_
          && count < this->logistic_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
@@ -53,7 +53,7 @@ void TerminatorClassifierLR::Train(map<string, node>& weights, bool is_spam)
     count++;
   }
   count = 0;
-  while (!is_spam && logist_score >= algorithm_threshold - this->logistic_thickness_
+  while (!is_spam && logist_score >= TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->logistic_thickness_
          && count < this->logistic_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
