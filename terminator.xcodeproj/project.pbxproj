@@ -22,6 +22,8 @@
 		A288C6D917CE442600E9901E /* terminator_classifier_pa.cc in Sources */ = {isa = PBXBuildFile; fileRef = A288C6D817CE442600E9901E /* terminator_classifier_pa.cc */; };
 		A288C6DB17CE463F00E9901E /* terminator_classifier_pam.h in Headers */ = {isa = PBXBuildFile; fileRef = A288C6DA17CE463E00E9901E /* terminator_classifier_pam.h */; };
 		A288C6DD17CE465300E9901E /* terminator_classifier_pam.cc in Sources */ = {isa = PBXBuildFile; fileRef = A288C6DC17CE465300E9901E /* terminator_classifier_pam.cc */; };
+		A28E130F17CF8D8B00147506 /* terminator_classifier_hit.h in Headers */ = {isa = PBXBuildFile; fileRef = A28E130E17CF8D8B00147506 /* terminator_classifier_hit.h */; };
+		A28E131117CF8D9A00147506 /* terminator_classifier_hit.cc in Sources */ = {isa = PBXBuildFile; fileRef = A28E131017CF8D9A00147506 /* terminator_classifier_hit.cc */; };
 		A2B2D2A217CC2040001E1DCB /* classifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D29D17CC2040001E1DCB /* classifier.cpp */; };
 		A2B2D2A317CC2040001E1DCB /* classifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B2D29E17CC2040001E1DCB /* classifier.h */; };
 		A2B2D2A417CC2040001E1DCB /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D29F17CC2040001E1DCB /* common.cpp */; };
@@ -48,6 +50,8 @@
 		A288C6D817CE442600E9901E /* terminator_classifier_pa.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_pa.cc; sourceTree = "<group>"; };
 		A288C6DA17CE463E00E9901E /* terminator_classifier_pam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator_classifier_pam.h; sourceTree = "<group>"; };
 		A288C6DC17CE465300E9901E /* terminator_classifier_pam.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_pam.cc; sourceTree = "<group>"; };
+		A28E130E17CF8D8B00147506 /* terminator_classifier_hit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator_classifier_hit.h; sourceTree = "<group>"; };
+		A28E131017CF8D9A00147506 /* terminator_classifier_hit.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_hit.cc; sourceTree = "<group>"; };
 		A2B2D29D17CC2040001E1DCB /* classifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classifier.cpp; sourceTree = "<group>"; };
 		A2B2D29E17CC2040001E1DCB /* classifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = classifier.h; sourceTree = "<group>"; };
 		A2B2D29F17CC2040001E1DCB /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				A288C6D817CE442600E9901E /* terminator_classifier_pa.cc */,
 				A288C6DA17CE463E00E9901E /* terminator_classifier_pam.h */,
 				A288C6DC17CE465300E9901E /* terminator_classifier_pam.cc */,
+				A28E130E17CF8D8B00147506 /* terminator_classifier_hit.h */,
+				A28E131017CF8D9A00147506 /* terminator_classifier_hit.cc */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 				A288C6D317CE3F9E00E9901E /* terminator_classifier_winnow.h in Headers */,
 				A288C6D717CE438800E9901E /* terminator_classifier_pa.h in Headers */,
 				A288C6DB17CE463F00E9901E /* terminator_classifier_pam.h in Headers */,
+				A28E130F17CF8D8B00147506 /* terminator_classifier_hit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +207,7 @@
 				A288C6D517CE400100E9901E /* terminator_classifier_winnow.cc in Sources */,
 				A288C6D917CE442600E9901E /* terminator_classifier_pa.cc in Sources */,
 				A288C6DD17CE465300E9901E /* terminator_classifier_pam.cc in Sources */,
+				A28E131117CF8D9A00147506 /* terminator_classifier_hit.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
