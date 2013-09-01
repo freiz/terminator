@@ -13,6 +13,16 @@ const double TerminatorClassifierOWV::DEFAULT_OWV_STEP = 0.02;
 TerminatorClassifierOWV::TerminatorClassifierOWV(double* weights_classifier)
 {
   this->owv_step_ = TerminatorClassifierOWV::DEFAULT_OWV_STEP;
+  
+  this->classifiers_[0] = new TerminatorClassifierBWinnow();
+  this->classifiers_[1] = new TerminatorClassifierLR();
+  this->classifiers_[2] = new TerminatorClassifierNB();
+  this->classifiers_[3] = new TermiantorClassifierNSNB();
+  this->classifiers_[4] = new TerminatorClassifierWinnow();
+  this->classifiers_[5] = new TerminatorClassifierPA();
+  this->classifiers_[6] = new TerminatorClassifierPAM();
+  this->classifiers_[7] = new TerminatorClassifierHIT();
+
   unsigned i = 0;
   while (i++ < CLASSIFIER_NUMBER) this->weights_classifier_[i] = weights_classifier[i];
 }

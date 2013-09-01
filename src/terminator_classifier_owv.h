@@ -33,17 +33,7 @@ private:
   double owv_step_;
   double owv_spam_tradeoff;
   
-  TerminatorClassifierBase* classifiers_[CLASSIFIER_NUMBER] = {
-    new TerminatorClassifierBWinnow(),
-    new TerminatorClassifierLR(),
-    new TerminatorClassifierNB(),
-    new TermiantorClassifierNSNB(),
-    new TerminatorClassifierWinnow(),
-    new TerminatorClassifierPA(),
-    new TerminatorClassifierPAM(),
-    new TerminatorClassifierHIT()
-  };
-  
+  TerminatorClassifierBase* classifiers_[CLASSIFIER_NUMBER];
   double weights_classifier_[CLASSIFIER_NUMBER];
   
 public:
