@@ -29,11 +29,11 @@ double TerminatorClassifierBWinnow::Predict(std::map<std::string, node>& weights
 {
   double bwinnow_score = 0.0;
   std::map<std::string, node>::iterator iter =
-  weights.begin();
+    weights.begin();
   while (iter != weights.end())
   {
     bwinnow_score += (iter->second).bwinnow_upper
-    - (iter->second).bwinnow_lower;
+                     - (iter->second).bwinnow_lower;
     ++iter;
   }
   bwinnow_score /= weights.size();
@@ -44,12 +44,12 @@ double TerminatorClassifierBWinnow::Predict(std::map<std::string, node>& weights
 
 
 void TerminatorClassifierBWinnow::Train(std::map<std::string, node>& weights,
-                   bool is_spam)
+                                        bool is_spam)
 {
   double bwinnow_score = this->Predict(weights);
   std::map<std::string, node>::iterator iter;
   int count = 0;
-  
+
   while (is_spam && bwinnow_score <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->bwinnow_thickness_
          && count < this->bwinnow_max_iterations_)
   {

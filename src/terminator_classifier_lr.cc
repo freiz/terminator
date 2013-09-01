@@ -40,14 +40,14 @@ void TerminatorClassifierLR::Train(std::map<std::string, node>& weights, bool is
   double logist_score = this->Predict(weights);
   std::map<std::string, node>::iterator iter;
   int count = 0;
-  
+
   while (is_spam && logist_score <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->logistic_thickness_
          && count < this->logistic_max_iterations_)
   {
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       (iter->second).logist += (1.0 - logist_score)
-      * this->logistic_learning_rate_;
+                               * this->logistic_learning_rate_;
     }
     logist_score = this->Predict(weights);
     count++;

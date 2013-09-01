@@ -40,11 +40,11 @@ double TerminatorClassifierWinnow::Predict(std::map<std::string, node>& weights)
 }
 
 void TerminatorClassifierWinnow::Train(std::map<std::string, node>& tmp_weights,
-                  bool is_spam)
+                                       bool is_spam)
 {
   std::map<std::string, node>::iterator iter;
   double score = this->Predict(tmp_weights);
-  
+
   int count = 0;
   if (is_spam && score < TerminatorClassifierBase::CLASSIFIER_THRESHOLD + this->winnow_thickness_
       && count < this->winnow_max_iterations_)
@@ -55,7 +55,7 @@ void TerminatorClassifierWinnow::Train(std::map<std::string, node>& tmp_weights,
     }
     count++;
   }
-  
+
   count = 0;
   if (!is_spam && score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD - this->winnow_thickness_
       && count < this->winnow_max_iterations_)

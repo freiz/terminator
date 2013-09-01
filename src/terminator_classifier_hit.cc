@@ -36,7 +36,7 @@ double TerminatorClassifierHIT::Predict(std::map<std::string, node>& weights)
 }
 
 void TerminatorClassifierHIT::Train(std::map<std::string, node>& weights,
-               bool is_spam)
+                                    bool is_spam)
 {
   std::map<std::string, node>::iterator iter;
   if (is_spam)
@@ -62,8 +62,8 @@ void TerminatorClassifierHIT::Train(std::map<std::string, node>& weights,
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       p = ((iter->second).hit_spam + this->hit_smooth_)
-      / ((iter->second).hit_ham + (iter->second).hit_spam
-         + 2.0 * this->hit_smooth_);
+          / ((iter->second).hit_ham + (iter->second).hit_spam
+             + 2.0 * this->hit_smooth_);
       ratio = fabs(2 * p - 1.0);
       (iter->second).hit += (1.0 - score) * this->hit_rate_;
       (iter->second).hit *= ratio;
@@ -77,8 +77,8 @@ void TerminatorClassifierHIT::Train(std::map<std::string, node>& weights,
     for (iter = weights.begin(); iter != weights.end(); ++iter)
     {
       p = ((iter->second).hit_spam + this->hit_smooth_)
-      / ((iter->second).hit_ham + (iter->second).hit_spam
-         + 2.0 * this->hit_smooth_);
+          / ((iter->second).hit_ham + (iter->second).hit_spam
+             + 2.0 * this->hit_smooth_);
       ratio = fabs(2 * p - 1.0);
       (iter->second).hit -= score * this->hit_rate_;
       (iter->second).hit *= ratio;

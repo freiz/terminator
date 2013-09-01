@@ -28,14 +28,14 @@ private:
   static const std::string IDENTIFIER_CLASSIFIER_WEIGHTS;
   static const std::string IDENTIFIER_TOTAL_SPAM;
   static const std::string IDENTIFIER_TOTAL_HAM;
-  
+
   std::string db_path_;
   size_t mem_cache_;
   kyotocabinet::HashDB db_;
   TerminatorClassifierBase* classifier_;
   ptr_node cache_node_;
   double classifier_weights_[CLASSIFIER_NUMBER];
-  
+
   bool InitDB(std::string db_path, size_t mem_cache);
   void PrepareMetaData();
   void SaveWeights(std::map<std::string, node>& weights);

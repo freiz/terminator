@@ -20,7 +20,7 @@ private:
   static const double DEFAULT_BWINNOW_THRESHOLD;
   static const double DEFAULT_BWINNOW_THICKNESS;
   static const double DEFAULT_BWINNOW_MAX_ITERATIONS;
-  
+
   double bwinnow_alpha_;
   double bwinnow_beta_;
   double bwinnow_shift_;

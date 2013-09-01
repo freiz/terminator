@@ -23,19 +23,19 @@
 
 class TerminatorClassifierOWV: public TerminatorClassifierBase
 {
-  
+
 private:
-  
+
   static const double DEFAULT_OWV_STEP;
   static const unsigned DEFAULT_CLASSIFIER_NUMBER;
   static const double DEFAULT_OWV_SPAM_TRADEOFF;
-  
+
   double owv_step_;
   double owv_spam_tradeoff;
-  
+
   TerminatorClassifierBase* classifiers_[CLASSIFIER_NUMBER];
   double weights_classifier_[CLASSIFIER_NUMBER];
-  
+
 public:
   TerminatorClassifierOWV(double* weights_classifier);
   virtual void Train(std::map<std::string, node>& weights, bool is_spam);

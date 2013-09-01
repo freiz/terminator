@@ -35,8 +35,8 @@ double TerminatorClassifierNB::Predict(std::map<std::string, node>& weights)
     if (s == 0 && h == 0)
       continue;
     score += log(
-                 (s + this->nb_smooth_) / (h + this->nb_smooth_) * (TerminatorClassifierBase::TotalHam + 2 * this->nb_smooth_)
-                 / (TerminatorClassifierBase::TotalSpam + 2 * this->nb_smooth_));
+               (s + this->nb_smooth_) / (h + this->nb_smooth_) * (TerminatorClassifierBase::TotalHam + 2 * this->nb_smooth_)
+               / (TerminatorClassifierBase::TotalSpam + 2 * this->nb_smooth_));
   }
   score += log((TerminatorClassifierBase::TotalSpam + this->nb_smooth_) / (TerminatorClassifierBase::TotalHam + this->nb_smooth_));
   score = logist(score / this->nb_shift_);
@@ -44,7 +44,7 @@ double TerminatorClassifierNB::Predict(std::map<std::string, node>& weights)
 }
 
 void TerminatorClassifierNB::TrainCell(std::map<std::string, node>& weights,
-                   bool is_spam)
+                                       bool is_spam)
 {
   std::map<std::string, node>::iterator iter;
   if (is_spam)
@@ -64,7 +64,7 @@ void TerminatorClassifierNB::TrainCell(std::map<std::string, node>& weights,
 }
 
 void TerminatorClassifierNB::Train(std::map<std::string, node>& weights,
-              bool is_spam)
+                                   bool is_spam)
 {
   std::map<std::string, node>::iterator iter;
   double score = this->Predict(weights);

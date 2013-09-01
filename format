@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd src
-astyle --style=ansi --indent=spaces=2 *.cpp *.h
+astyle --style=ansi --indent=spaces=2 *.cc *.h
 rm *.orig

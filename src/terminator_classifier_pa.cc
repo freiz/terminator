@@ -28,7 +28,7 @@ double TerminatorClassifierPA::Predict(std::map<std::string, node>& weights)
 }
 
 void TerminatorClassifierPA::Train(std::map<std::string, node>& weights,
-              bool is_spam)
+                                   bool is_spam)
 {
   int label;
   if (is_spam)

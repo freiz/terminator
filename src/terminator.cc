@@ -41,7 +41,7 @@ Terminator::Terminator(std::string db_path, size_t mem_cache)
   }
   this->PrepareMetaData();
   // Real classifier in use
-  this->classifier_ = new TerminatorClassifierOWV(this->classifier_weights_);  
+  this->classifier_ = new TerminatorClassifierOWV(this->classifier_weights_);
 }
 
 Terminator::~Terminator()

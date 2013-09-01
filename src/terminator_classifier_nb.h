@@ -19,13 +19,13 @@ private:
   static const double DEFAULT_NB_THICKNESS;
   static const int DEFAULT_NB_INCREASING;
   static const int DEFAULT_NB_MAX_ITERATIONS;
-  
+
   double nb_shift_;
   double nb_smooth_;
   double nb_thickness_;
   int nb_increasing_;
   int nb_max_iterations_;
-  
+
   void TrainCell(std::map<std::string, node>& weights, bool is_spam);
 
 public:

@@ -13,7 +13,7 @@ const double TerminatorClassifierOWV::DEFAULT_OWV_STEP = 0.02;
 TerminatorClassifierOWV::TerminatorClassifierOWV(double* weights_classifier)
 {
   this->owv_step_ = TerminatorClassifierOWV::DEFAULT_OWV_STEP;
-  
+
   this->classifiers_[0] = new TerminatorClassifierBWinnow();
   this->classifiers_[1] = new TerminatorClassifierLR();
   this->classifiers_[2] = new TerminatorClassifierNB();
@@ -89,7 +89,7 @@ void TerminatorClassifierOWV::Train(std::map<std::string, node>& weights, bool i
       }
     }
   }
-  
+
   for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++)
   {
     classifiers_[i]->Train(weights, is_spam);

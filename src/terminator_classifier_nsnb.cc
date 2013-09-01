@@ -35,10 +35,10 @@ double TermiantorClassifierNSNB::Predict(std::map<std::string, node>& weights)
     if (s == 0 && h == 0)
       continue;
     score += log(
-                 (s + this->nsnb_smooth_) / (h + this->nsnb_smooth_)
-                 * (TerminatorClassifierBase::TotalHam + 2 * this->nsnb_smooth_)
-                 / (TerminatorClassifierBase::TotalSpam + 2 * this->nsnb_smooth_)
-                 * (iter->second).nsnb_confidence);
+               (s + this->nsnb_smooth_) / (h + this->nsnb_smooth_)
+               * (TerminatorClassifierBase::TotalHam + 2 * this->nsnb_smooth_)
+               / (TerminatorClassifierBase::TotalSpam + 2 * this->nsnb_smooth_)
+               * (iter->second).nsnb_confidence);
   }
   score += log((TerminatorClassifierBase::TotalSpam + this->nsnb_smooth_) / (TerminatorClassifierBase::TotalHam + this->nsnb_smooth_));
   score = logist(score / this->nsnb_shift_);
@@ -66,7 +66,7 @@ void TermiantorClassifierNSNB::TrainCell(std::map<std::string, node>& weights, b
   }
 }
 void TermiantorClassifierNSNB::Train(std::map<std::string, node>& weights,
-                bool is_spam)
+                                     bool is_spam)
 {
   std::map<std::string, node>::iterator iter;
   double score = this->Predict(weights);
