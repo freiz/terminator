@@ -28,9 +28,6 @@
 		A295898917CF92C800A94E6F /* terminator_classifier_owv.cc in Sources */ = {isa = PBXBuildFile; fileRef = A295898817CF92C800A94E6F /* terminator_classifier_owv.cc */; };
 		A295898B17D0181C00A94E6F /* terminator.h in Headers */ = {isa = PBXBuildFile; fileRef = A295898A17D0181C00A94E6F /* terminator.h */; };
 		A295898D17D0182B00A94E6F /* terminator.cc in Sources */ = {isa = PBXBuildFile; fileRef = A295898C17D0182B00A94E6F /* terminator.cc */; };
-		A2B2D2A417CC2040001E1DCB /* common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D29F17CC2040001E1DCB /* common.cpp */; };
-		A2B2D2A517CC2040001E1DCB /* common.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B2D2A017CC2040001E1DCB /* common.h */; };
-		A2B2D2A617CC2040001E1DCB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D2A117CC2040001E1DCB /* main.cpp */; };
 		A2B2D2A817CC2293001E1DCB /* libkyotocabinet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B2D2A717CC2293001E1DCB /* libkyotocabinet.a */; };
 		A2B2D2AA17CC2828001E1DCB /* terminator_classifier_lr.h in Headers */ = {isa = PBXBuildFile; fileRef = A2B2D2A917CC2828001E1DCB /* terminator_classifier_lr.h */; };
 		A2B2D2AC17CC28E1001E1DCB /* terminator_classifier_lr.cc in Sources */ = {isa = PBXBuildFile; fileRef = A2B2D2AB17CC28E1001E1DCB /* terminator_classifier_lr.cc */; };
@@ -58,9 +55,6 @@
 		A295898817CF92C800A94E6F /* terminator_classifier_owv.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_owv.cc; sourceTree = "<group>"; };
 		A295898A17D0181C00A94E6F /* terminator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator.h; sourceTree = "<group>"; };
 		A295898C17D0182B00A94E6F /* terminator.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator.cc; sourceTree = "<group>"; };
-		A2B2D29F17CC2040001E1DCB /* common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = common.cpp; sourceTree = "<group>"; };
-		A2B2D2A017CC2040001E1DCB /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
-		A2B2D2A117CC2040001E1DCB /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		A2B2D2A717CC2293001E1DCB /* libkyotocabinet.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libkyotocabinet.a; path = lib/libkyotocabinet.a; sourceTree = "<group>"; };
 		A2B2D2A917CC2828001E1DCB /* terminator_classifier_lr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = terminator_classifier_lr.h; sourceTree = "<group>"; };
 		A2B2D2AB17CC28E1001E1DCB /* terminator_classifier_lr.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminator_classifier_lr.cc; sourceTree = "<group>"; };
@@ -82,9 +76,6 @@
 		A2B2D29C17CC2040001E1DCB /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A2B2D29F17CC2040001E1DCB /* common.cpp */,
-				A2B2D2A017CC2040001E1DCB /* common.h */,
-				A2B2D2A117CC2040001E1DCB /* main.cpp */,
 				A295898C17D0182B00A94E6F /* terminator.cc */,
 				A295898A17D0181C00A94E6F /* terminator.h */,
 				A288C6CC17CE326500E9901E /* terminator_classifier_base.cc */,
@@ -136,7 +127,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B2D2A517CC2040001E1DCB /* common.h in Headers */,
 				A2B2D2AA17CC2828001E1DCB /* terminator_classifier_lr.h in Headers */,
 				A26D82D817CC2B7E0093EFE0 /* terminator_common.h in Headers */,
 				A281AD2A17CCE42400AECAE4 /* terminator_classifier_base.h in Headers */,
@@ -203,8 +193,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2B2D2A417CC2040001E1DCB /* common.cpp in Sources */,
-				A2B2D2A617CC2040001E1DCB /* main.cpp in Sources */,
 				A2B2D2AC17CC28E1001E1DCB /* terminator_classifier_lr.cc in Sources */,
 				A288C6C717CE25D800E9901E /* terminator_classifier_bwinnow.cc in Sources */,
 				A288C6CB17CE2A4A00E9901E /* terminator_classifier_nb.cc in Sources */,
