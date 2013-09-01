@@ -40,7 +40,8 @@ Terminator::Terminator(std::string db_path, size_t mem_cache)
     exit(EXIT_FAILURE);
   }
   this->PrepareMetaData();
-  this->classifier_ = new TerminatorClassifierOWV(this->classifier_weights_);
+  // Real classifier in use
+  this->classifier_ = new TerminatorClassifierOWV(this->classifier_weights_);  
 }
 
 Terminator::~Terminator()

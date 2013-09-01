@@ -22,6 +22,7 @@ TerminatorClassifierBWinnow::TerminatorClassifierBWinnow()
   this->bwinnow_shift_ = TerminatorClassifierBWinnow::DEFAULT_BWINNOW_SHIFT;
   this->bwinnow_threshold_ = TerminatorClassifierBWinnow::DEFAULT_BWINNOW_THRESHOLD;
   this->bwinnow_thickness_ = TerminatorClassifierBWinnow::DEFAULT_BWINNOW_THICKNESS;
+  this->bwinnow_max_iterations_ = TerminatorClassifierBWinnow::DEFAULT_BWINNOW_MAX_ITERATIONS;
 }
 
 double TerminatorClassifierBWinnow::Predict(std::map<std::string, node>& weights)
