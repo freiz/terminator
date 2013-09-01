@@ -125,7 +125,7 @@ void Terminator::Vectorization(std::string email_content, std::map<std::string, 
 {
   size_t len = email_content.length();
   len = len <= MAX_READ_LEN ? len : MAX_READ_LEN;
-  for (int i = 0; i <= len - NGRAM; i++)
+  for (unsigned i = 0; i <= len - NGRAM; i++)
   {
     std::string feature = email_content.substr(i, NGRAM);
     if (db_.get(feature.c_str(), feature.size(), (char*) cache_node_, sizeof(node))
