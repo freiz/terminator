@@ -9,7 +9,10 @@
 #include <vector>
 #include <kchashdb.h>
 
-#include "common.h"
+#include "terminator.h"
+
+#define MAX_READ_LENGTH (3000)
+#define THRESHOLD (.615)
 
 using namespace std;
 using namespace kyotocabinet;
@@ -17,15 +20,14 @@ using namespace kyotocabinet;
 int main(int argc, const char** argv)
 {
   clock_t begin = clock();
-  terminator_init("terminator.kch", 5 << 20);
-  string corpus_path = "F:/dataset/spamassassin/";
+  Terminator* classifier = new Terminator("terminator.kch", 5<<20);
+  string corpus_path = "/Users/freiz/Documents/Resource/corpus/ceas08-1/full-immediate/";
 
   string index_path = corpus_path + "index";
   ifstream index;
   index.open(index_path.c_str());
   string email_type, email_path;
   char buff[MAX_READ_LENGTH];
-  char buff_result[200];
   vector<string> email_type_list;
   vector<string> email_path_list;
   while (index >> email_type >> email_path)
@@ -51,7 +53,8 @@ int main(int argc, const char** argv)
       printf("Processing --> %5.2f%%\t\tElapsed Time --> %6.1f (s)\n",
              (email_count + 0.0) / total_emails * 100,
              (now - begin + 0.0) / CLOCKS_PER_SEC);
-      printf("ham->spam =  %3d\t\tspam->ham =  %3d\n", hs, sh);
+      printf("ham->ham  =  %3d\t\tspam->spam =  %3d\n", hh, ss);
+      printf("ham->spam =  %3d\t\tspam->ham  =  %3d\n", hs, sh);
     }
     memset(buff, 0, MAX_READ_LENGTH);
     email_path = corpus_path + email_path;
@@ -64,7 +67,7 @@ int main(int argc, const char** argv)
     if (email_type == "ham" || email_type == "spam" || email_type == "Ham"
         || email_type == "Spam")
     {
-      score = terminator_predict(buff);
+      score = classifier->Predict(buff);
       string prediction, judge;
       if (score > THRESHOLD)
         prediction = "spam";
@@ -86,9 +89,9 @@ int main(int argc, const char** argv)
       }
     }
     if (email_type == "ham" || email_type == "HAM")
-      terminator_train(buff, false);
+      classifier->Train(buff, false);
     if (email_type == "spam" || email_type == "SPAM")
-      terminator_train(buff, true);
+      classifier->Train(buff, true);
   }
 
   index.close();
@@ -98,8 +101,7 @@ int main(int argc, const char** argv)
   fprintf(stderr, "Average: %.1f (e-mails per second)\n",
           email_count / ((end - begin + 0.0) / CLOCKS_PER_SEC));
 
-  printf("ham->spam =  %3d\t\tspam->ham =  %3d\n", hs, sh);
-
-  terminator_exit();
+  printf("ham->ham  =  %3d\t\tspam->spam =  %3d\n", ss, hh);
+  printf("ham->spam =  %3d\t\tspam->ham  =  %3d\n", hs, sh);
   return EXIT_SUCCESS;
 }
