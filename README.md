@@ -1,0 +1,87 @@
+Introduction
+=== 
+
+[Terminator](https://github.com/freiz/terminator) is a library written in C++ for spam filtering, like the famous [SpamBayes](http://spambayes.sourceforge.net/)
+and [OSBF-Lua](http://osbf-lua.luaforge.net/). It's suitable to be embeded into other spam filtering software or service as a machine learning module. The advantages are 
+
+* Very high precison and recall, best results on all public spam filtering corpus.
+* Controllable memroy usage, suitable for both server side and client side filtering on typical PC.
+
+Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning.
+
+Implementation
+===
+Most machine learning modules used in exsiting spam filtering softwares use variant navie bayes algorithms. Terminator used a combined model which include eight different machine learning algorithms to boost the spam filtering perfomance. The algorithms are listed below with according papers
+
+* [Naive Bayes](http://classes.soe.ucsc.edu/cmps242/Fall09/lect/12/CEAS2006_corrected-naiveBayesSpam.pdf)
+* [Not So Naive Bayes](http://aaai.org/ocs/index.php/IAAI/IAAI09/paper/view/240/1033)
+* [Online Logistic Regression](http://research.microsoft.com/pubs/73691/goodmanyih-ceas06.pdf)
+* [HIT](http://www.ceas.cc/2008/papers/china.pdf)
+* [Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
+* [Balanced Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
+* [Passive Aggressive](http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2003_LT21.pdf)
+* [On-line Perceptron Algorithm with Margins](http://www.eecs.tufts.edu/~dsculley/papers/trec.2006.spam.pdf)
+
+and the fusion algorithm are discribed in "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)"
+
+Installation & Usage
+===
+
+### Step 1, Install Dependencies
+The only dependecies is [kyotocabinet](http://fallabs.com/kyotocabinet/) for persistance, which need to install first.
+
+### Step 2, Install Terminator and Compile
+```bash
+clone https://github.com/freiz/terminator.git
+cd terminator
+make
+```
+You can change the compiler suite in Makefile, the output is a static linkable lib.
+
+### Step 3, Write an Example
+```c++
+#include "terminator.h"
+
+// The first parameter is the path of database file
+// The second parameter is the main memory used as cache, the unit is Byte, so 5 << 20 is around 5MB as cache
+Terminator* classifier = new Terminator("terminator.kch", 5 << 20);
+
+// Now you can write the main logic
+// There are two public api, train and predict
+
+// [Predict] pass in the email content and return a score ranging from 0 (100% ham) to 1 (100% spam)
+// You can change the threshold to make the decision on your own 
+double score = classifier->predict(std::string email_content);
+
+// [Train] pass in the email content and a flag
+// If spam train, the flag set to true or false
+classifier->train(std::string email_content, boolean is_spam)
+```
+
+### Step 4, Compile and Link Your Own bits
+Do not forget to link against kyotocabinet.
+
+Experiment Result
+===
+Here, I only quote samples of results on public corpus Trec05-p1
+
+<table>
+  <tr>
+    <th>Competitor</th><th>(1-ROCA)%, the smaller the better</th>
+  </tr>
+  <tr>
+    <td>bogoﬁlter</td><td>0.048</td>
+  </tr>
+  <tr>
+    <td>spamprobe</td><td>0.059</td>
+  </tr>
+  <tr>
+    <td>spamasassin</td><td>0.059</td>
+  </tr>
+  <tr>
+    <td>terminator</td><td>0.0055</td>
+  </tr>
+</table>
+
+The paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete experiment based on terminator.
+
