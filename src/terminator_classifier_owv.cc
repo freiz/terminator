@@ -2,9 +2,6 @@
 //  terminator_classifier_owv.cc
 //  terminator
 //
-//  Created by freiz on 13-8-29.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
 
 #include "terminator_classifier_owv.h"
 

@@ -2,9 +2,6 @@
 //  terminator_classifier_lr.cc
 //  terminator
 //
-//  Created by freiz on 13-8-27.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
 
 #include "terminator_classifier_lr.h"
 

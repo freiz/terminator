@@ -2,9 +2,9 @@
 //  terminator.h
 //  terminator
 //
-//  Created by freiz on 13-8-30.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
+//  @author freiz
+//  @email freizsu@gmail.com
+
 
 #ifndef terminator_terminator_h
 #define terminator_terminator_h

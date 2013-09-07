@@ -2,9 +2,6 @@
 //  terminator_classifier_nb.h
 //  terminator
 //
-//  Created by freiz on 13-8-28.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
 
 #ifndef terminator_terminator_classifier_nb_h
 #define terminator_terminator_classifier_nb_h

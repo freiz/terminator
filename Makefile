@@ -13,3 +13,6 @@ objects:
 clean:
 	rm -rf *.o
 	if [ -d lib ]; then rm -rf lib/*; fi
+
+format:
+	cd src; astyle --style=ansi --indent=spaces=2 *.cc *.h; rm *.orig

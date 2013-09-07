@@ -2,8 +2,8 @@
 //  terminator.cc
 //  terminator
 //
-//  Created by freiz on 13-8-30.
-//  Copyright (c) 2013年 freiz. All rights reserved.
+//  @author freiz
+//  @email freizsu@gmail.com
 //
 
 #include "terminator.h"

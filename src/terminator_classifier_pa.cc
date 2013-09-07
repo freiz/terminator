@@ -2,9 +2,6 @@
 //  terminator_classifier_pa.cc
 //  terminator
 //
-//  Created by freiz on 13-8-28.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
 
 #include "terminator_classifier_pa.h"
 

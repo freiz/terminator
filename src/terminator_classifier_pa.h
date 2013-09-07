@@ -2,9 +2,6 @@
 //  terminator_classifier_pa.h
 //  terminator
 //
-//  Created by freiz on 13-8-28.
-//  Copyright (c) 2013年 freiz. All rights reserved.
-//
 
 #ifndef terminator_terminator_classifier_pa_h
 #define terminator_terminator_classifier_pa_h
