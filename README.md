@@ -7,7 +7,9 @@ and [OSBF-Lua](http://osbf-lua.luaforge.net/). It's suitable to be embeded into 
 * Very high precison and recall, best results on all public spam filtering corpus.
 * Controllable memroy usage, suitable for both server side and client side filtering on typical PC.
 
-Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning.
+Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning. 
+
+Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)".
 
 Implementation
 ===
@@ -21,8 +23,6 @@ Most machine learning modules used in exsiting spam filtering softwares use vari
 * [Balanced Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
 * [Passive Aggressive](http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2003_LT21.pdf)
 * [On-line Perceptron Algorithm with Margins](http://www.eecs.tufts.edu/~dsculley/papers/trec.2006.spam.pdf)
-
-and the fusion algorithm are discribed in "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)"
 
 Installation & Usage
 ===
@@ -47,15 +47,15 @@ You can change the compiler suite in Makefile, the output is a static linkable l
 Terminator* classifier = new Terminator("terminator.kch", 5 << 20);
 
 // Now you can write the main logic
-// There are two public api, train and predict
+// There are two public api, Train and Predict
 
 // [Predict] pass in the email content and return a score ranging from 0 (100% ham) to 1 (100% spam)
 // You can change the threshold to make the decision on your own 
-double score = classifier->predict(std::string email_content);
+double score = classifier->Predict(std::string email_content);
 
 // [Train] pass in the email content and a flag
 // If spam train, the flag set to true or false
-classifier->train(std::string email_content, boolean is_spam)
+classifier->Train(std::string email_content, boolean is_spam)
 ```
 
 ### Step 4, Compile and Link Your Own bits
@@ -63,7 +63,7 @@ Do not forget to link against kyotocabinet.
 
 Experiment Result
 ===
-Here, I only quote samples of results on public corpus Trec05-p1
+Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.nist.gov/pubs/trec14/papers/SPAM.OVERVIEW.pdf)
 
 <table>
   <tr>
@@ -83,5 +83,5 @@ Here, I only quote samples of results on public corpus Trec05-p1
   </tr>
 </table>
 
-The paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete experiment based on terminator.
+The paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete set of experiments based on terminator.
 
