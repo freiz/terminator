@@ -9,7 +9,7 @@ and [OSBF-Lua](http://osbf-lua.luaforge.net/). It's suitable to be embeded into 
 
 Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning. 
 
-Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)".
+Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](http://www.computer.org/csdl/mags/ex/preprint/06563073.pdf)".
 
 Implementation
 ===
