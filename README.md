@@ -28,7 +28,7 @@ Installation & Usage
 ===
 
 ### Step 1, Install Dependencies
-The only dependecies is [kyotocabinet](http://fallabs.com/kyotocabinet/) for persistance, which need to install first.
+The only dependencies is [kyotocabinet](http://fallabs.com/kyotocabinet/) for persistance, which need to be installed first.
 
 ### Step 2, Install Terminator and Compile
 ```bash
@@ -58,7 +58,13 @@ double score = classifier->Predict(std::string email_content);
 classifier->Train(std::string email_content, boolean is_spam)
 ```
 
-### Step 4, Compile and Link Your Own bits
+### Step 4, Play with Demo (Optional)
+```bash
+make run-demo
+```
+It will run a demo application to simulate spam filtering using spamassassin corpus, you can also put other corpus (such as [ceas08](http://plg.uwaterloo.ca/~gvcormac/ceascorpus/)) under demo/corpus to check the experiment result.
+
+### Step 5, Compile and Link Your Own bits
 Do not forget to link against kyotocabinet.
 
 Experiment Result
