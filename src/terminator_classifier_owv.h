@@ -18,10 +18,9 @@
 
 #define CLASSIFIER_NUMBER (8)
 
-class TerminatorClassifierOWV: public TerminatorClassifierBase
-{
+class TerminatorClassifierOWV: public TerminatorClassifierBase {
 
-private:
+ private:
 
   static const double DEFAULT_OWV_STEP;
   static const unsigned DEFAULT_CLASSIFIER_NUMBER;
@@ -33,7 +32,7 @@ private:
   TerminatorClassifierBase* classifiers_[CLASSIFIER_NUMBER];
   double weights_classifier_[CLASSIFIER_NUMBER];
 
-public:
+ public:
   TerminatorClassifierOWV(double* weights_classifier);
   virtual void Train(std::map<std::string, node>& weights, bool is_spam);
   virtual double Predict(std::map<std::string, node>& weights);

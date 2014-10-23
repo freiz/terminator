@@ -8,9 +8,8 @@
 
 #include "terminator_classifier_base.h"
 
-class TerminatorClassifierPAM: public TerminatorClassifierBase
-{
-private:
+class TerminatorClassifierPAM: public TerminatorClassifierBase {
+ private:
 
   static const double DEFAULT_PAM_SHIFT;
   static const double DEFAULT_PAM_LAMBDA;
@@ -20,7 +19,7 @@ private:
   double pam_lambda_;
   double pam_max_iterations_;
 
-public:
+ public:
 
   TerminatorClassifierPAM();
   virtual double Predict(std::map<std::string, node>& weights);

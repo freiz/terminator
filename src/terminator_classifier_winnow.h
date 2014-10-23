@@ -8,9 +8,8 @@
 
 #include "terminator_classifier_base.h"
 
-class TerminatorClassifierWinnow: public TerminatorClassifierBase
-{
-private:
+class TerminatorClassifierWinnow: public TerminatorClassifierBase {
+ private:
 
   static const double DEFAULT_WINNOW_THRESHOLD;
   static const double DEFAULT_WINNOW_SHIFT;
@@ -26,7 +25,7 @@ private:
   double winnow_beta_;
   double winnow_max_iterations_;
 
-public:
+ public:
 
   TerminatorClassifierWinnow();
   virtual double Predict(std::map<std::string, node>& weights);

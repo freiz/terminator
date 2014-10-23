@@ -8,10 +8,9 @@
 
 #include "terminator_classifier_base.h"
 
-class TerminatorClassifierHIT: public TerminatorClassifierBase
-{
+class TerminatorClassifierHIT: public TerminatorClassifierBase {
 
-private:
+ private:
 
   static const double DEFAULT_HIT_RATE;
   static const double DEFAULT_HIT_SHIFT;
@@ -25,7 +24,7 @@ private:
   double hit_smooth_;
   int hit_max_iterations_;
 
-public:
+ public:
 
   TerminatorClassifierHIT();
   virtual void Train(std::map<std::string, node>& weights, bool is_spam);

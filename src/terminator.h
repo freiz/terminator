@@ -21,9 +21,8 @@
 #define MAX_READ_LEN (3000)
 #define NGRAM (4)
 
-class Terminator
-{
-private:
+class Terminator {
+ private:
   static const node DEFALULT_NODE_VALUE;
   static const std::string IDENTIFIER_CLASSIFIER_WEIGHTS;
   static const std::string IDENTIFIER_TOTAL_SPAM;
@@ -40,7 +39,7 @@ private:
   void PrepareMetaData();
   void SaveWeights(std::map<std::string, node>& weights);
   void Vectorization(std::string email_content, std::map<std::string, node>& weights);
-public:
+ public:
   Terminator(std::string db_path, size_t mem_cache);
   ~Terminator();
   double Predict(std::string email_content);

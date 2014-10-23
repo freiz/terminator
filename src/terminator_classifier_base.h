@@ -8,9 +8,8 @@
 
 #include "terminator_common.h"
 
-class TerminatorClassifierBase
-{
-public:
+class TerminatorClassifierBase {
+ public:
   static unsigned long long TotalSpam;
   static unsigned long long TotalHam;
   static const double CLASSIFIER_THRESHOLD;

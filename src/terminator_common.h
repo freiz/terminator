@@ -14,8 +14,7 @@
  * base model of terminator
  * store information of each feature
  * */
-struct Node
-{
+struct Node {
   float logist;
   float bwinnow_upper;
   float bwinnow_lower;
@@ -35,13 +34,11 @@ struct Node
 typedef struct Node node;
 typedef struct Node * ptr_node;
 
-inline double logist(double x)
-{
+inline double logist(double x) {
   return 1.0 / (1.0 + exp(-x));
 }
 
-inline double invlogist(double x)
-{
+inline double invlogist(double x) {
   return log(x / (1 - x));
 }
 

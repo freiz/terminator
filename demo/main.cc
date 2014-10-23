@@ -17,8 +17,7 @@
 using namespace std;
 using namespace kyotocabinet;
 
-int main(int argc, const char** argv)
-{
+int main(int argc, const char** argv) {
   clock_t begin = clock();
   Terminator* classifier = new Terminator("train.model", 5<<23);
   string corpus_path = "corpus/";
@@ -30,8 +29,7 @@ int main(int argc, const char** argv)
   char buff[MAX_READ_LENGTH];
   vector<string> email_type_list;
   vector<string> email_path_list;
-  while (index >> email_type >> email_path)
-  {
+  while (index >> email_type >> email_path) {
     email_type_list.push_back(email_type);
     email_path_list.push_back(email_path);
   }
@@ -42,13 +40,11 @@ int main(int argc, const char** argv)
   int sh = 0;
   int hs = 0;
   int hh = 0;
-  while (email_count < total_emails)
-  {
+  while (email_count < total_emails) {
     email_type = email_type_list[email_count];
     email_path = email_path_list[email_count];
     ++email_count;
-    if (email_count % 500 == 0)
-    {
+    if (email_count % 500 == 0) {
       clock_t now = clock();
       printf("Processing --> %5.2f%%\t\tElapsed Time --> %6.1f (s)\n",
              (email_count + 0.0) / total_emails * 100,
@@ -65,23 +61,19 @@ int main(int argc, const char** argv)
 
     double score = 0.5;
     if (email_type == "ham" || email_type == "spam" || email_type == "Ham"
-        || email_type == "Spam")
-    {
+        || email_type == "Spam") {
       score = classifier->Predict(buff);
       string prediction, judge;
       if (score > THRESHOLD)
         prediction = "spam";
       else
         prediction = "ham";
-      if (email_type == "ham")
-      {
+      if (email_type == "ham") {
         if (prediction == "ham")
           hh += 1;
         else
           hs += 1;
-      }
-      else
-      {
+      } else {
         if (prediction == "ham")
           sh += 1;
         else

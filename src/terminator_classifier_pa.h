@@ -8,15 +8,14 @@
 
 #include "terminator_classifier_base.h"
 
-class TerminatorClassifierPA: public TerminatorClassifierBase
-{
-private:
+class TerminatorClassifierPA: public TerminatorClassifierBase {
+ private:
 
   static const double DEFAULT_PA_SHIFT;
 
   double pa_shift_;
 
-public:
+ public:
 
   TerminatorClassifierPA();
   virtual double Predict(std::map<std::string, node>& weights);

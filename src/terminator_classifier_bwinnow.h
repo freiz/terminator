@@ -8,9 +8,8 @@
 
 #include "terminator_classifier_base.h"
 
-class TerminatorClassifierBWinnow: public TerminatorClassifierBase
-{
-private:
+class TerminatorClassifierBWinnow: public TerminatorClassifierBase {
+ private:
   static const double DEFAULT_BWINNOW_ALPHA;
   static const double DEFAULT_BWINNOW_BETA;
   static const double DEFAULT_BWINNOW_SHIFT;
@@ -25,7 +24,7 @@ private:
   double bwinnow_thickness_;
   double bwinnow_max_iterations_;
 
-public:
+ public:
   TerminatorClassifierBWinnow();
   virtual double Predict(std::map<std::string, node>& weights);
   virtual void Train(std::map<std::string, node>& weights, bool is_spam);

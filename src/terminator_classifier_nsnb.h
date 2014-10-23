@@ -8,9 +8,8 @@
 
 #include "terminator_classifier_base.h"
 
-class TermiantorClassifierNSNB: public TerminatorClassifierBase
-{
-private:
+class TermiantorClassifierNSNB: public TerminatorClassifierBase {
+ private:
   static const double DEFAULT_NSNB_SHIFT;
   static const double DEFAULT_NSNB_SMOOTH;
   static const double DEFAULT_NSNB_THICKNESS;
@@ -25,7 +24,7 @@ private:
 
   void TrainCell(std::map<std::string, node>& weights, bool is_spam);
 
-public:
+ public:
   TermiantorClassifierNSNB();
   virtual double Predict(std::map<std::string, node>& weights);
   virtual void Train(std::map<std::string, node>& weights, bool is_spam);
