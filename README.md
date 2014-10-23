@@ -89,5 +89,5 @@ Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.n
   </tr>
 </table>
 
-The paper "[An Adaptive Fusion Algorithm for Spam Detection](www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete set of experiments based on terminator.
+The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete set of experiments based on terminator.
 
