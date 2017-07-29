@@ -30,7 +30,7 @@ class TerminatorClassifierOWV: public TerminatorClassifierBase {
   double owv_spam_tradeoff;
 
   TerminatorClassifierBase* classifiers_[CLASSIFIER_NUMBER];
-  double weights_classifier_[CLASSIFIER_NUMBER];
+  double* weights_classifier_;
 
  public:
   TerminatorClassifierOWV(double* weights_classifier);

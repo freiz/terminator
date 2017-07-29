@@ -19,7 +19,7 @@ TerminatorClassifierOWV::TerminatorClassifierOWV(double* weights_classifier) {
   this->classifiers_[6] = new TerminatorClassifierPAM();
   this->classifiers_[7] = new TerminatorClassifierHIT();
 
-  for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++) this->weights_classifier_[i] = weights_classifier[i];
+  this->weights_classifier_ = weights_classifier;
 }
 
 TerminatorClassifierOWV::~TerminatorClassifierOWV()
@@ -50,8 +50,10 @@ void TerminatorClassifierOWV::Train(std::map<std::string, node>& weights, bool i
   if (is_spam) {
     if (final_score > TerminatorClassifierBase::CLASSIFIER_THRESHOLD) {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++) {
-        if (scores[i] <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
+        if (scores[i] <= TerminatorClassifierBase::CLASSIFIER_THRESHOLD) {
           weights_classifier_[i] -= owv_step_;
+          if (weights_classifier_[i] < 0) weights_classifier_[i] = 0;
+        }
       }
     } else {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++) {
@@ -67,8 +69,10 @@ void TerminatorClassifierOWV::Train(std::map<std::string, node>& weights, bool i
       }
     } else {
       for (unsigned i = 0; i < CLASSIFIER_NUMBER; i++) {
-        if (scores[i] > TerminatorClassifierBase::CLASSIFIER_THRESHOLD)
+        if (scores[i] > TerminatorClassifierBase::CLASSIFIER_THRESHOLD) {
           weights_classifier_[i] -= owv_step_;
+          if (weights_classifier_[i] < 0) weights_classifier_[i] = 0;
+        }
       }
     }
   }
