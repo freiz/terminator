@@ -22,8 +22,7 @@ TerminatorClassifierOWV::TerminatorClassifierOWV(double* weights_classifier) {
   this->weights_classifier_ = weights_classifier;
 }
 
-TerminatorClassifierOWV::~TerminatorClassifierOWV()
-{
+TerminatorClassifierOWV::~TerminatorClassifierOWV() {
   for( unsigned i = 0; i<CLASSIFIER_NUMBER; i++ ) delete this->classifiers_[i];
 }
 
