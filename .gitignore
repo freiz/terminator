@@ -1,2 +1,4 @@
 *.o
 *.kch
+demo/corpus
+lib
