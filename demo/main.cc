@@ -1,15 +1,11 @@
 #include <iostream>
-#include <cmath>
-#include <cstdio>
-#include <ctime>
-#include <cstdlib>
 #include <cstring>
 #include <fstream>
 #include <map>
 #include <vector>
 #include <kchashdb.h>
 
-#include "terminator.h"
+#include "../src/terminator.h"
 
 #define MAX_READ_LENGTH (3000)
 #define THRESHOLD (.615)
@@ -33,7 +29,7 @@ int main(int argc, const char** argv) {
     email_type_list.push_back(email_type);
     email_path_list.push_back(email_path);
   }
-  int total_emails = email_path_list.size();
+  unsigned long total_emails = email_path_list.size();
   int email_count = 0;
 
   int ss = 0;
@@ -59,10 +55,9 @@ int main(int argc, const char** argv) {
     email.read(buff, MAX_READ_LENGTH);
     email.close();
 
-    double score = 0.5;
     if (email_type == "ham" || email_type == "spam" || email_type == "Ham"
         || email_type == "Spam") {
-      score = classifier->Predict(buff);
+      double score = classifier->Predict(buff);
       string prediction, judge;
       if (score > THRESHOLD)
         prediction = "spam";
@@ -95,5 +90,7 @@ int main(int argc, const char** argv) {
 
   printf("ham->ham  =  %3d\t\tspam->spam =  %3d\n", hh, ss);
   printf("ham->spam =  %3d\t\tspam->ham  =  %3d\n", hs, sh);
+
+  delete classifier;
   return EXIT_SUCCESS;
 }
