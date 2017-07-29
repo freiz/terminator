@@ -20,7 +20,7 @@ format:
 	cd demo; astyle --style=google --indent=spaces=2 *.cc; rm -f *.orig
 
 demo: lib
-	cd demo; tar -xjf corpus.tar.bz2; rm train.model; g++ -std=c++0x `kcutilmgr conf -i` `kcutilmgr conf -l` -I../src -L../lib -lterminator -o run-demo main.cc;
+	cd demo; tar -xjf corpus.tar.bz2; [ -f train.model ] && rm train.model; $(CC) $(CCFLAGS) main.cc `kcutilmgr conf -l` -I../src -L../lib -lterminator -o run-demo
 
 run-demo: demo
 	cd demo; ./run-demo;
