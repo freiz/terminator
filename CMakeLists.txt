@@ -77,9 +77,3 @@ install(FILES 	${TERMINATOR_INCLUDE}/terminator_classifier_base.h
 
 				DESTINATION include)
 
-SET(CPACK_GENERATOR "DEB")
-SET(CPACK_PACKAGE_NAME "mint-terminator")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A tool for spam filtering")
-SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Aleksandr Matuzok (sherilynhope@gmail.com)")
-SET(CPACK_DEBIAN_PACKAGE_DEPENDS	"libkyotocabinet-dev")
-INCLUDE(CPack)
