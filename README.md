@@ -2,14 +2,14 @@ Introduction
 === 
 
 [Terminator](https://github.com/freiz/terminator) is a library written in C++ for spam filtering, like the famous [SpamBayes](http://spambayes.sourceforge.net/)
-and [OSBF-Lua](http://osbf-lua.luaforge.net/). It's suitable to be embeded into other spam filtering software or service as a machine learning module. The advantages are 
+and [OSBF-Lua](https://github.com/arunpersaud/osbf-lua). It's suitable to be embeded into other spam filtering software or service as a machine learning module. The advantages are 
 
 * Very high precison and recall, best results on all public spam filtering corpus.
 * Controllable memroy usage, suitable for both server side and client side filtering on typical PC.
 
 Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning. 
 
-Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](http://www.computer.org/csdl/mags/ex/preprint/06563073.pdf)".
+Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)".
 
 Implementation
 ===
@@ -17,11 +17,11 @@ Most machine learning modules used in exsiting spam filtering softwares use vari
 
 * [Naive Bayes](http://classes.soe.ucsc.edu/cmps242/Fall09/lect/12/CEAS2006_corrected-naiveBayesSpam.pdf)
 * [Not So Naive Bayes](http://aaai.org/ocs/index.php/IAAI/IAAI09/paper/view/240/1033)
-* [Online Logistic Regression](http://research.microsoft.com/pubs/73691/goodmanyih-ceas06.pdf)
+* [Online Logistic Regression](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/GoodmanYih-ceas06.pdf)
 * [HIT](http://www.ceas.cc/2008/papers/china.pdf)
 * [Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
 * [Balanced Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
-* [Passive Aggressive](http://machinelearning.wustl.edu/mlpapers/paper_files/NIPS2003_LT21.pdf)
+* [Passive Aggressive](https://www.cs.huji.ac.il/~shais/papers/CrammerDeShSi03.pdf)
 * [On-line Perceptron Algorithm with Margins](http://www.eecs.tufts.edu/~dsculley/papers/trec.2006.spam.pdf)
 
 Installation & Usage
@@ -89,5 +89,5 @@ Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.n
   </tr>
 </table>
 
-The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://www.computer.org/csdl/mags/ex/preprint/06563073.pdf)" contains a very complete set of experiments based on terminator.
+The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" contains a very complete set of experiments based on terminator.
 
