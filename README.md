@@ -1,18 +1,19 @@
-Introduction
-=== 
+# Introduction
 
 [Terminator](https://github.com/freiz/terminator) is a library written in C++ for spam filtering, like the famous [SpamBayes](http://spambayes.sourceforge.net/)
 and [OSBF-Lua](https://github.com/arunpersaud/osbf-lua). It can be embedded into other spam filtering software or service as a machine learning module. The advantages are 
 
 * Very high precision and recall, best results on all public spam filtering corpus.
-* Suitable for both server-side and client-side spam filtering on a typical PC.
+* It is fast and can only consume several MB of memory.
+* Do not need to tune hyper-parameters
 
 Terminator can be used in any other binary text classification problems, especially those that need an adaptive model for online learning. 
 
 Terminator is **not** a complete E2E spam filtering solution. Instead, it focuses on the machine learning part without blocklist/allowlist or DKIM. My paper, "[An](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf) Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" described the implementation in detail.
 
-Implementation
-===
+(**Update on Jan 2023.** The work of this library dates back to around 2010. It consistently got SOTA results on most online learning email filtering corpus, TREC, CEAS, and a private dataset from NetEase. I have not followed this area for a long time, so I may miss some latest research. For batch learning context, I think the newest Transformer based LLMs have great potential.)
+
+# Implementation
 Terminator used a fusion model, which includes eight machine learning algorithms to boost spam filtering performance. The algorithms are listed below according to papers
 
 * [Naive Bayes](http://classes.soe.ucsc.edu/cmps242/Fall09/lect/12/CEAS2006_corrected-naiveBayesSpam.pdf)
@@ -22,15 +23,16 @@ Terminator used a fusion model, which includes eight machine learning algorithms
 * [Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
 * [Balanced Winnow](http://www.cs.cmu.edu/~vitor/papers/kdd06_final.pdf)
 * [Passive Aggressive](https://www.cs.huji.ac.il/~shais/papers/CrammerDeShSi03.pdf)
-* [On-line Perceptron Algorithm with Margins](http://www.eecs.tufts.edu/~dsculley/papers/trec.2006.spam.pdf)
+* [Online Perceptron Algorithm with Margins](http://www.eecs.tufts.edu/~dsculley/papers/trec.2006.spam.pdf)
 
-Installation & Usage
-===
+We used a novel adaptive model fusion technique. The weight of every single model is learned during the online learning process.
 
-### Step 1, Install Dependencies
+# Installation & Usage
+
+## Step 1, Install Dependencies
 The only dependency is [kyotocabinet](http://fallabs.com/kyotocabinet/)](http://fallabs.com/kyotocabinet/) for persistence, which must be installed first.
 
-### Step 2, Install Terminator and Compile
+## Step 2, Install Terminator and Compile
 ```bash
 clone https://github.com/freiz/terminator.git
 cd terminator
@@ -38,7 +40,7 @@ make
 ```
 You can change the compiler suite in Makefile; the output is a static linkable lib.
 
-### Step 3, Write an Example
+## Step 3, Write an Example
 ```c++
 #include "terminator.h"
 
@@ -58,17 +60,16 @@ double score = classifier->Predict(std::string email_content);
 classifier->Train(std::string email_content, boolean is_spam)
 ```
 
-### Step 4, Play with Demo (Optional)
+## Step 4, Play with Demo (Optional)
 ```bash
 make run-demo
 ```
 It will run a demo application to simulate spam filtering using the SpamAssassin corpus; you can also put another dataset (such as [ceas08](http://plg.uwaterloo.ca/~gvcormac/ceascorpus/)) under demo/corpus to check the experiment result.
 
-### Step 5, Compile and Link Your bits
+## Step 5, Compile and Link Your bits
 Do not forget to link against the library kyotocabinet.
 
-Experiment Result
-===
+# Experiment Result
 Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.nist.gov/pubs/trec14/papers/SPAM.OVERVIEW.pdf)
 
 <table>
@@ -90,4 +91,3 @@ Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.n
 </table>
 
 The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" contains a complete set of experiment results.
-
