@@ -2,18 +2,18 @@ Introduction
 === 
 
 [Terminator](https://github.com/freiz/terminator) is a library written in C++ for spam filtering, like the famous [SpamBayes](http://spambayes.sourceforge.net/)
-and [OSBF-Lua](https://github.com/arunpersaud/osbf-lua). It's suitable to be embeded into other spam filtering software or service as a machine learning module. The advantages are 
+and [OSBF-Lua](https://github.com/arunpersaud/osbf-lua). It can be embedded into other spam filtering software or service as a machine learning module. The advantages are 
 
-* Very high precison and recall, best results on all public spam filtering corpus.
-* Controllable memroy usage, suitable for both server side and client side filtering on typical PC.
+* Very high precision and recall, best results on all public spam filtering corpus.
+* Suitable for both server-side and client-side spam filtering on a typical PC.
 
-Terminator can be used in any other binary text classification problems, especially those need adaptive model to do online learning. 
+Terminator can be used in any other binary text classification problems, especially those that need an adaptive model for online learning. 
 
-Terminator is **not** a complete set of spam filtering library while only focus on machine learning part without black/white list or dkim and so on. The implementation are described in detail in my paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)".
+Terminator is **not** a complete E2E spam filtering solution. Instead, it focuses on the machine learning part without blocklist/allowlist or DKIM. My paper, "[An](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf) Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" described the implementation in detail.
 
 Implementation
 ===
-Most machine learning modules used in exsiting spam filtering softwares use variant navie bayes algorithms. Terminator used a combined model which include eight different machine learning algorithms to boost the spam filtering perfomance. The algorithms are listed below with according papers
+Terminator used a fusion model, which includes eight machine learning algorithms to boost spam filtering performance. The algorithms are listed below according to papers
 
 * [Naive Bayes](http://classes.soe.ucsc.edu/cmps242/Fall09/lect/12/CEAS2006_corrected-naiveBayesSpam.pdf)
 * [Not So Naive Bayes](http://aaai.org/ocs/index.php/IAAI/IAAI09/paper/view/240/1033)
@@ -28,7 +28,7 @@ Installation & Usage
 ===
 
 ### Step 1, Install Dependencies
-The only dependencies is [kyotocabinet](http://fallabs.com/kyotocabinet/) for persistance, which need to be installed first.
+The only dependency is [kyotocabinet](http://fallabs.com/kyotocabinet/)](http://fallabs.com/kyotocabinet/) for persistence, which must be installed first.
 
 ### Step 2, Install Terminator and Compile
 ```bash
@@ -36,7 +36,7 @@ clone https://github.com/freiz/terminator.git
 cd terminator
 make
 ```
-You can change the compiler suite in Makefile, the output is a static linkable lib.
+You can change the compiler suite in Makefile; the output is a static linkable lib.
 
 ### Step 3, Write an Example
 ```c++
@@ -62,10 +62,10 @@ classifier->Train(std::string email_content, boolean is_spam)
 ```bash
 make run-demo
 ```
-It will run a demo application to simulate spam filtering using spamassassin corpus, you can also put other corpus (such as [ceas08](http://plg.uwaterloo.ca/~gvcormac/ceascorpus/)) under demo/corpus to check the experiment result.
+It will run a demo application to simulate spam filtering using the SpamAssassin corpus; you can also put another dataset (such as [ceas08](http://plg.uwaterloo.ca/~gvcormac/ceascorpus/)) under demo/corpus to check the experiment result.
 
-### Step 5, Compile and Link Your Own bits
-Do not forget to link against kyotocabinet.
+### Step 5, Compile and Link Your bits
+Do not forget to link against the library kyotocabinet.
 
 Experiment Result
 ===
@@ -89,5 +89,5 @@ Here, I only quote samples of results on public corpus [Trec05-p1](http://trec.n
   </tr>
 </table>
 
-The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" contains a very complete set of experiments based on terminator.
+The paper "[An Adaptive Fusion Algorithm for Spam Detection](http://csse.szu.edu.cn/staff/panwk/publications/Journal-IEEE-IS-14-AFSD.pdf)" contains a complete set of experiment results.
 
