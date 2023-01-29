@@ -107,6 +107,9 @@ void Terminator::PrepareMetaData() {
 
 void Terminator::Vectorization(std::string email_content, std::map<std::string, node>& weights) {
   size_t len = email_content.length();
+  if (len < NGRAM) {
+    throw std::invalid_argument("email content is too short");
+  }
   len = len <= MAX_READ_LEN ? len : MAX_READ_LEN;
   for (unsigned i = 0; i <= len - NGRAM; i++) {
     std::string feature = email_content.substr(i, NGRAM);

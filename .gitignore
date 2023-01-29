@@ -1,4 +1,6 @@
 *.o
 *.kch
 demo/corpus
+demo/run-demo
+demo/train.model
 lib
